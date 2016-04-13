@@ -20,22 +20,22 @@ namespace Zaika
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginWindow : Window
     {
-        public MainWindow()
+        public LoginWindow()
         {
             InitializeComponent();
             //FlickrNet.Flickr fl = new FlickrNet.Flickr("ce28f896e78baffae502ff23e1df8645", "e4bc6d42f6c0b074");
             //var options = new PhotoSearchOptions { Tags = "fox toy", PerPage = 1, Page = 1 };
             //PhotoCollection photos = fl.PhotosSearch(options);
             //image.Source = new BitmapImage(new Uri(photos.First().SmallUrl));
-            login.Focus();
+            Login.Focus();
 
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-           // if (login.Text == "Foxxyy")
+           // if (Login.Text == "Foxxyy")
            // {
                 Window1 win = new Window1();
                 win.Show();
@@ -46,7 +46,7 @@ namespace Zaika
         private void login_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
-                passwordBox.Focus();
+                PasswordBox.Focus();
         }
 
         private void passwordBox_KeyDown(object sender, KeyEventArgs e)
