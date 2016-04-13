@@ -27,18 +27,6 @@ namespace Zaika
         public Window1()
         {
             InitializeComponent();
-            //FlickrNet.Flickr fl = new FlickrNet.Flickr("ce28f896e78baffae502ff23e1df8645", "e4bc6d42f6c0b074");
-            //var options = new PhotoSearchOptions { Tags = "fox", PerPage = 1, Page = 1 };
-            //PhotoCollection photos = fl.PhotosSearch(options);
-            //fox.Source = new BitmapImage(new Uri(photos.First().SmallUrl));
-
-            //options = new PhotoSearchOptions { Tags = "rabbit", PerPage = 1, Page = 1 };
-            //photos = fl.PhotosSearch(options);
-            //rabbit.Source = new BitmapImage(new Uri(photos.First().SmallUrl));
-
-            //options = new PhotoSearchOptions { Tags = "elephant", PerPage = 1, Page = 1 };
-            //photos = fl.PhotosSearch(options);
-            //Elephant.Source = new BitmapImage(new Uri(photos.First().SmallUrl));
 
             toys = new List<string>(new[] { "fox", "elephant", "owl" });
             toy = new List<StackPanel>();
@@ -50,19 +38,25 @@ namespace Zaika
             {
                 TextBlock tb = new TextBlock();
                 Image im = new Image();
-                im.Width = 100;
-                im.Height = 100;
+                im.Width = 50;
+                im.Height = 50;
+                
                 StackPanel stp = new StackPanel();
                 tb.Text = toys[i];
-                FlickrNet.Flickr fl = new FlickrNet.Flickr("ce28f896e78baffae502ff23e1df8645", "e4bc6d42f6c0b074");
-                var options = new PhotoSearchOptions { Tags = tb.Text, PerPage = 1, Page = 1 };
-                PhotoCollection photos = fl.PhotosSearch(options);
-                im.Source = new BitmapImage(new Uri(photos.First().SmallUrl));
+                try
+                {
+                    FlickrNet.Flickr fl = new FlickrNet.Flickr("ce28f896e78baffae502ff23e1df8645", "e4bc6d42f6c0b074");
+                    var options = new PhotoSearchOptions { Tags = tb.Text + " toy", PerPage = 1, Page = 1 };
+                    PhotoCollection photos = fl.PhotosSearch(options);
+                    im.Source = new BitmapImage(new Uri(photos.First().SmallUrl));
+                }
+                catch { }
                 stp.Children.Add(im);
                 stp.Children.Add(tb);
+                stp.Height = 50;
                 stp.Orientation = Orientation.Horizontal;
-                tb.Margin = new Thickness(10, 30, 0, 10);
-                tb.FontSize = 20;
+                tb.Margin = new Thickness(10, 17, 0, 10);
+                tb.FontSize = 18;
                 toy.Add(stp);
             }
         }

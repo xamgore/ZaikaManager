@@ -13,18 +13,17 @@
 
     <Grid Margin="1,0,2,-21">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="229*"/>
-            <ColumnDefinition Width="142*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="105,73,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="170" Background="#00000000" Grid.ColumnSpan="2" KeyDown="passwordBox_KeyDown"/>
-        <TextBox x:Name="login" HorizontalAlignment="Left" Height="23" Margin="105,30,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Background="#00000000" Grid.ColumnSpan="2" KeyDown="login_KeyDown" SelectionBrush="#FF35A640" RenderTransformOrigin="-1,0"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="105,73,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="170" Background="#00000000" KeyDown="passwordBox_KeyDown"/>
+        <TextBox x:Name="login" HorizontalAlignment="Left" Height="23" Margin="105,30,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Background="#00000000" KeyDown="login_KeyDown" SelectionBrush="#FF35A640" RenderTransformOrigin="-1,0"/>
         <Label x:Name="loginLab" Content="Login:" HorizontalAlignment="Left" Margin="33,29,0,0" Grid.RowSpan="2" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.457"/>
         <Label x:Name="passwordLab" Content="Password:" HorizontalAlignment="Left" Margin="33,73,0,0" Grid.RowSpan="2" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.457"/>
-        <Button x:Name="button" Content="Sign in" HorizontalAlignment="Left" Margin="225,132,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="106" BorderThickness="5,1,1,1" Click="button_Click" Grid.ColumnSpan="2" Style="{DynamicResource MaterialDesignRaisedAccentButton}"/>
-        <Canvas Margin="41,36,164,152" Grid.RowSpan="2"/>
+        <Button x:Name="button" Content="Sign in" HorizontalAlignment="Left" Margin="225,132,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="106" BorderThickness="5,1,1,1" Click="button_Click" Style="{DynamicResource MaterialDesignRaisedAccentButton}"/>
+        <Canvas Margin="41,36,306,152" Grid.RowSpan="2"/>
     </Grid>
 </Window>

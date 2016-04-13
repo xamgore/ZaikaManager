@@ -5,12 +5,93 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zaika"
         mc:Ignorable="d"
-        Title="ZaikaDB Manager" Height="651.088" Width="480.784"
+        Title="ZaikaDB Manager" Height="651.088" Width="953.284"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         >
     <Grid>
-        <ListBox x:Name="products" Margin="5"/>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="610" VerticalAlignment="Top" Width="935" FontSize="16">
+            <TabItem Header="Products" Margin="-3,0,-10,0" Height="23">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox x:Name="products" Margin="10,10,0,10" BorderThickness="2" ScrollViewer.CanContentScroll="False" BorderBrush="#FF2F8127" HorizontalAlignment="Left" Width="382"/>
+                    <TextBox x:Name="nameProd" HorizontalAlignment="Left" Height="29" Margin="642,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" Panel.ZIndex="2"/>
+                    <TextBox x:Name="nameWH" HorizontalAlignment="Left" Height="23" Margin="642,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" Panel.ZIndex="2"/>
+                    <Label x:Name="label" Content="Enter name:" HorizontalAlignment="Left" Margin="432,52,0,0" VerticalAlignment="Top" Width="210" Panel.ZIndex="2"/>
+                    <Label x:Name="label_Copy" Content="Enter name of warhouse:" HorizontalAlignment="Left" Margin="432,90,0,0" VerticalAlignment="Top" Width="210" Panel.ZIndex="2"/>
+                    <Label x:Name="label1" Content="Add new product:" HorizontalAlignment="Left" Margin="432,10,0,0" VerticalAlignment="Top" FontSize="20" Panel.ZIndex="2" Height="37"/>
+                    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="186" Margin="426,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="493"/>
+                    <Button x:Name="addConfirm" Content="Confirm" HorizontalAlignment="Left" Margin="744,143,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.291,0.656"/>
+                    <TextBox x:Name="countProd" HorizontalAlignment="Left" Height="23" Margin="540,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Panel.ZIndex="2"/>
+                    <Label x:Name="label_Copy1" Content="Enter count:" HorizontalAlignment="Left" Margin="432,124,0,0" VerticalAlignment="Top" Width="103" Panel.ZIndex="2"/>
+                    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="132" Margin="426,218,0,0" Stroke="Black" VerticalAlignment="Top" Width="493"/>
+                    <Label x:Name="label2" Content="Delete selected product: " HorizontalAlignment="Left" Height="43" Margin="432,227,0,0" VerticalAlignment="Top" Width="237" FontSize="20"/>
+                    <Slider x:Name="countSL" HorizontalAlignment="Left" Margin="467,276,0,0" VerticalAlignment="Top" Width="286" Height="22"/>
+                    <TextBox x:Name="countDel" HorizontalAlignment="Left" Height="23" Margin="791,275,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.297,0.609"/>
+                    <Label x:Name="label_Copy2" Content="Enter count to delete:" HorizontalAlignment="Left" Margin="432,251,0,0" VerticalAlignment="Top" Width="210" Panel.ZIndex="2"/>
+                    <ListBox x:Name="productsWH" Margin="426,399,0,10" BorderThickness="2" ScrollViewer.CanContentScroll="False" BorderBrush="#FF2F8127" HorizontalAlignment="Left" Width="493"/>
+                    <Label x:Name="label3" Content="Count in WHs:" HorizontalAlignment="Left" Height="30" Margin="426,364,0,0" VerticalAlignment="Top" Width="296" FontSize="20"/>
+                    <Button x:Name="delConfirm" Content="Confirm" HorizontalAlignment="Left" Margin="744,310,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.291,0.656"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Producers" Margin="11,0,-15,-1">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox x:Name="products_Copy" Margin="10,10,0,10" BorderThickness="2" ScrollViewer.CanContentScroll="False" BorderBrush="#FF2F8127" HorizontalAlignment="Left" Width="382"/>
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <ListBox x:Name="products1" Margin="10,10,0,10" BorderThickness="2" ScrollViewer.CanContentScroll="False" BorderBrush="#FF2F8127" HorizontalAlignment="Left" Width="382"/>
+                        <TextBox x:Name="nameProd1" HorizontalAlignment="Left" Height="29" Margin="595,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" Panel.ZIndex="2"/>
+                        <TextBox x:Name="nameWH1" HorizontalAlignment="Left" Height="23" Margin="595,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" Panel.ZIndex="2"/>
+                        <Label x:Name="label4" Content="Enter name:" HorizontalAlignment="Left" Margin="432,52,0,0" VerticalAlignment="Top" Width="224" Panel.ZIndex="2"/>
+                        <Label x:Name="label_Copy3" Content="Enter city:" HorizontalAlignment="Left" Margin="432,90,0,0" VerticalAlignment="Top" Width="210" Panel.ZIndex="2"/>
+                        <Label x:Name="label5" Content="Add new producer:" HorizontalAlignment="Left" Margin="432,10,0,0" VerticalAlignment="Top" FontSize="20" Panel.ZIndex="2" Height="37"/>
+                        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="186" Margin="426,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="493"/>
+                        <Button x:Name="addConfirm1" Content="Confirm" HorizontalAlignment="Left" Margin="744,143,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.291,0.656"/>
+                        <TextBox x:Name="countProd1" HorizontalAlignment="Left" Height="23" Margin="549,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" Panel.ZIndex="2"/>
+                        <Label x:Name="label_Copy4" Content="Enter number:" HorizontalAlignment="Left" Margin="432,124,0,0" VerticalAlignment="Top" Width="112" Panel.ZIndex="2"/>
+                        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="132" Margin="426,218,0,0" Stroke="Black" VerticalAlignment="Top" Width="493"/>
+                        <Label x:Name="label6" Content="Delete selected company: " HorizontalAlignment="Left" Height="43" Margin="432,227,0,0" VerticalAlignment="Top" Width="237" FontSize="20"/>
+                        <Button x:Name="delConfirm1" Content="Confirm" HorizontalAlignment="Left" Margin="744,310,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.291,0.656"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Warhouses" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="116" Margin="16,0,-16,0" RenderTransformOrigin="0.5,0.5">
+                <TabItem.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.435"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TabItem.RenderTransform>
+                <Grid Background="#FFE5E5E5">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <ListBox x:Name="products2" Margin="10,10,0,10" BorderThickness="2" ScrollViewer.CanContentScroll="False" BorderBrush="#FF2F8127" HorizontalAlignment="Left" Width="382"/>
+                        <TextBox x:Name="nameProd2" HorizontalAlignment="Left" Height="29" Margin="594,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Panel.ZIndex="2"/>
+                        <TextBox x:Name="nameWH2" HorizontalAlignment="Left" Height="23" Margin="594,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Panel.ZIndex="2"/>
+                        <Label x:Name="label7" Content="Enter name:" HorizontalAlignment="Left" Margin="432,52,0,0" VerticalAlignment="Top" Width="224" Panel.ZIndex="2"/>
+                        <Label x:Name="label_Copy5" Content="Enter city:" HorizontalAlignment="Left" Margin="432,90,0,0" VerticalAlignment="Top" Width="210" Panel.ZIndex="2"/>
+                        <Label x:Name="label8" Content="Add new warhouse:" HorizontalAlignment="Left" Margin="432,10,0,0" VerticalAlignment="Top" FontSize="20" Panel.ZIndex="2" Height="37"/>
+                        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="186" Margin="426,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="493"/>
+                        <Button x:Name="addConfirm2" Content="Confirm" HorizontalAlignment="Left" Margin="744,143,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.291,0.656"/>
+                        <TextBox x:Name="countProd2" HorizontalAlignment="Left" Height="23" Margin="549,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" Panel.ZIndex="2"/>
+                        <Label x:Name="label_Copy6" Content="Enter number:" HorizontalAlignment="Left" Margin="432,124,0,0" VerticalAlignment="Top" Width="112" Panel.ZIndex="2"/>
+                        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="132" Margin="426,218,0,0" Stroke="Black" VerticalAlignment="Top" Width="493"/>
+                        <Label x:Name="label9" Content="Delete selected warhouse: " HorizontalAlignment="Left" Height="43" Margin="432,227,0,0" VerticalAlignment="Top" Width="270" FontSize="20"/>
+                        <Button x:Name="delConfirm2" Content="Confirm" HorizontalAlignment="Left" Margin="744,310,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.291,0.656"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Operations" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="95" Margin="17,0,-42,0">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox x:Name="products2_Copy" Margin="10,10,0,10" BorderThickness="2" ScrollViewer.CanContentScroll="False" BorderBrush="#FF2F8127" HorizontalAlignment="Left" Width="909"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

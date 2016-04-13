@@ -29,6 +29,7 @@ namespace Zaika
             //var options = new PhotoSearchOptions { Tags = "fox toy", PerPage = 1, Page = 1 };
             //PhotoCollection photos = fl.PhotosSearch(options);
             //image.Source = new BitmapImage(new Uri(photos.First().SmallUrl));
+            login.Focus();
 
         }
 
