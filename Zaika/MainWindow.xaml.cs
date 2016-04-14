@@ -18,14 +18,18 @@ namespace Zaika
     /// <summary>
     /// Логика взаимодействия для Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class MainWindow : Window
     {
         List<string> toys;
         List<StackPanel> toy;
+
+        string databaseLogin;
+        string databasePassword;
         
-        
-        public Window1()
+        public MainWindow(string databaseLogin = "kek", string databasePassword = "")
         {
+            this.databasePassword = databasePassword;
+            this.databaseLogin = databaseLogin;
             InitializeComponent();
 
             toys = new List<string>(new[] { "fox", "elephant", "owl" });
