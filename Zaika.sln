@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zaika", "Zaika\Zaika.csproj", "{C2D1D043-9B58-40BB-8596-252C4C66C768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZaikaManager", "ZaikaManager\ZaikaManager.csproj", "{32A991FB-2DB9-4ECB-A5FA-F04EF64535EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeDataGenerator", "FakeDataGenerator\FakeDataGenerator.csproj", "{1E939B76-67C5-4669-BC86-E55DAA65F3F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{C2D1D043-9B58-40BB-8596-252C4C66C768}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2D1D043-9B58-40BB-8596-252C4C66C768}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2D1D043-9B58-40BB-8596-252C4C66C768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32A991FB-2DB9-4ECB-A5FA-F04EF64535EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32A991FB-2DB9-4ECB-A5FA-F04EF64535EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32A991FB-2DB9-4ECB-A5FA-F04EF64535EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32A991FB-2DB9-4ECB-A5FA-F04EF64535EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E939B76-67C5-4669-BC86-E55DAA65F3F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E939B76-67C5-4669-BC86-E55DAA65F3F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E939B76-67C5-4669-BC86-E55DAA65F3F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E939B76-67C5-4669-BC86-E55DAA65F3F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
