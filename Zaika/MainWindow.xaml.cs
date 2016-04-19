@@ -54,7 +54,7 @@ namespace Zaika {
                 panelItems.Add(stp);
             }
 
-            products.ItemsSource = panelItems;
+            Products.ItemsSource = panelItems;
         }
     }
 }
