@@ -2,7 +2,7 @@
 using System.Windows.Input;
 
 namespace Zaika {
-    public partial class LoginWindow : Window {
+    public partial class LoginWindow {
         public LoginWindow() {
             InitializeComponent();
             Login.Focus();

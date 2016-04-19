@@ -1,9 +1,7 @@
-﻿<Window x:Name="LoginForm" x:Class="Zaika.LoginWindow"
+﻿<сontrols:MetroWindow x:Name="LoginForm" x:Class="Zaika.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
+        xmlns:сontrols="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         Title="Sign in" Height="207.387" Width="330.372"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
@@ -27,4 +25,4 @@
             Grid.RowSpan="2" VerticalAlignment="Top" Width="106" BorderThickness="5,1,1,1" Click="TryToSignIn"
             Style="{DynamicResource MaterialDesignRaisedAccentButton}" Background="#FF3CC549" BorderBrush="#FF137A1D" TabIndex="3" />
   </Grid>
-</Window>
+</сontrols:MetroWindow>

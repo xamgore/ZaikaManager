@@ -18,7 +18,7 @@ namespace Zaika
     /// <summary>
     /// Логика взаимодействия для Window1.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         List<string> toys;
         List<StackPanel> toy;
