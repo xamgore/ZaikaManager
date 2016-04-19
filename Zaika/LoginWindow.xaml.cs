@@ -6,7 +6,6 @@ namespace Zaika {
     public partial class LoginWindow {
         public LoginWindow() {
             InitializeComponent();
-            Login.Focus();
 
             KeyDown += (o, e) => {
                 if (e.Key == Key.Escape)
