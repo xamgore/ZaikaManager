@@ -91,6 +91,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\DB.cs" />
+    <Compile Include="Core\Operation.cs" />
+    <Compile Include="Core\Producer.cs" />
+    <Compile Include="Core\Product.cs" />
+    <Compile Include="Core\Stuff.cs" />
+    <Compile Include="Core\Warehouse.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>

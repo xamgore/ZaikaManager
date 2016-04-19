@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using Zaika.Core;
 
 namespace Zaika {
     public partial class LoginWindow {
         public LoginWindow() {
             InitializeComponent();
+            Login.Text = "postgres";
+            Password.Password = ".";
 
             KeyDown += (o, e) => {
                 if (e.Key == Key.Escape)
@@ -20,12 +23,10 @@ namespace Zaika {
                 Login.Focus();
             else if (Password.Password.Length == 0)
                 Password.Focus();
-            else {
-                // todo: connect to database
-                new MainWindow(Login.Text, Password.Password).Show();
+            else if (DB.Connect(Login.Text, Password.Password)) {
+                new MainWindow().Show();
                 Close();
             }
         }
-
     }
 }
