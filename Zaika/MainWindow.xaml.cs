@@ -30,18 +30,18 @@ namespace Zaika {
                 var tb = new TextBlock();
                 var im = new Image {
                     Width = 50,
-                    Height = 50
+                    Height = 50,
+                    Stretch = Stretch.UniformToFill,
                 };
 
                 var stp = new StackPanel();
                 tb.Text = toyName;
-                try {
-                    var fl = new Flickr("ce28f896e78baffae502ff23e1df8645", "e4bc6d42f6c0b074");
-                    var options = new PhotoSearchOptions { Tags = tb.Text + " toy", PerPage = 1, Page = 1 };
-                    fl.PhotosSearchAsync(options, photos => {
+                var fl = new Flickr("ce28f896e78baffae502ff23e1df8645", "e4bc6d42f6c0b074");
+                var options = new PhotoSearchOptions { Tags = tb.Text + " toy", PerPage = 1, Page = 1 };
+                fl.PhotosSearchAsync(options, photos => {
+                    if (!photos.HasError)
                         im.Source = new BitmapImage(new Uri(photos.Result.First().SmallUrl));
-                    });
-                } catch { }
+                });
 
                 stp.Children.Add(im);
                 stp.Children.Add(tb);
