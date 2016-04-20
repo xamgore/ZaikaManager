@@ -16,9 +16,11 @@ namespace Zaika {
         public MainWindow() {
             InitializeComponent();
 
-            //DisplayProducts(
-            //    DB.Zaika.Fetch<Product>(
-            //        SqlBuilder.Select("*").From(typeof (Product)).ToSqlQuery()));
+
+            DB.Zaika.FetchAsync<Product>(
+                SqlBuilder.Select("*").From(typeof(Product)).ToSqlQuery())
+                .ContinueWith(task => Dispatcher.Invoke(() => DisplayProducts(task.Result))
+            );
 
         }
 
@@ -35,12 +37,13 @@ namespace Zaika {
                 Flickr.PhotosSearchAsync(
                     new PhotoSearchOptions { Tags = toy.Name + " toy", PerPage = 1, Page = 1 },
                     photos => {
-                        if (!photos.HasError)
+                        if (!photos.HasError && photos.Result.Count > 0)
                             icon.Source = new BitmapImage(new Uri(photos.Result.First().SmallUrl));
                     });
 
                 var description = new TextBlock {
-                    Margin = new Thickness(10, 17, 0, 10),
+                    Margin = new Thickness(10, 0, 0, 0),
+                    VerticalAlignment = VerticalAlignment.Center,
                     Text = toy.Name,
                     FontSize = 18
                 };
