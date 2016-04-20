@@ -6,7 +6,6 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using FlickrNet;
-using MicroLite.Builder;
 using Zaika.Core;
 using Color = System.Windows.Media.Color;
 using Image = System.Windows.Controls.Image;
@@ -18,17 +17,14 @@ namespace Zaika {
         public MainWindow() {
             InitializeComponent();
 
-            DB.Zaika.FetchAsync<Product>(
-                SqlBuilder.Select("*").From(typeof(Product)).ToSqlQuery())
-                .ContinueWith(task => Dispatcher.Invoke(() => DisplayProducts(task.Result))
-            );
-
+            DB.ProductsLoaded += (o, e) => Dispatcher.Invoke(DisplayProducts);
+            DB.LoadProducts();
         }
 
-        public void DisplayProducts(IList<Product> list) {
+        public void DisplayProducts() {
             var panelItems = new List<StackPanel>();
 
-            foreach (var toy in list) {
+            foreach (var toy in DB.Products.Values) {
                 var icon = new Image {
                     Stretch = Stretch.UniformToFill,
                     Width = 50,
