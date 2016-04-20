@@ -8,6 +8,8 @@ using System.Windows.Media.Imaging;
 using FlickrNet;
 using MicroLite.Builder;
 using Zaika.Core;
+using Color = System.Windows.Media.Color;
+using Image = System.Windows.Controls.Image;
 
 namespace Zaika {
     public partial class MainWindow {
@@ -15,7 +17,6 @@ namespace Zaika {
 
         public MainWindow() {
             InitializeComponent();
-
 
             DB.Zaika.FetchAsync<Product>(
                 SqlBuilder.Select("*").From(typeof(Product)).ToSqlQuery())
@@ -31,7 +32,7 @@ namespace Zaika {
                 var icon = new Image {
                     Stretch = Stretch.UniformToFill,
                     Width = 50,
-                    Height = 50
+                    Height = 50,
                 };
 
                 Flickr.PhotosSearchAsync(
@@ -41,16 +42,23 @@ namespace Zaika {
                             icon.Source = new BitmapImage(new Uri(photos.Result.First().SmallUrl));
                     });
 
+                var placeholder = new Border {
+                    Background = new SolidColorBrush(Color.FromArgb(190, 0x21, 0x96, 0xf3)),
+                    Height = 50,
+                    Width = 50,
+                    Child = icon
+                };
+
                 var description = new TextBlock {
-                    Margin = new Thickness(10, 0, 0, 0),
                     VerticalAlignment = VerticalAlignment.Center,
+                    Margin = new Thickness(10, 0, 0, 0),
                     Text = toy.Name,
                     FontSize = 18
                 };
 
                 var stp = new StackPanel {
                     Orientation = Orientation.Horizontal,
-                    Children = { icon, description },
+                    Children = { placeholder, description },
                     Height = 50
                 };
 
