@@ -20,7 +20,7 @@ namespace Zaika {
 
             //DB.ProductsLoaded += Ui(DisplayProducts);
             //DB.LoadProducts();
-            DB.ProductsLoaded += Ui(DisplayProducers);
+            DB.ProducersLoaded += Ui(DisplayProducers);
             DB.LoadProducers();
         }
 
