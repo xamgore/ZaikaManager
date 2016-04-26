@@ -31,7 +31,6 @@ namespace Zaika {
             Producers.ItemsSource = DB.Producers.Values.Select(
                 producer => new ProducerInfo {
                     Title = { Text = producer.Name },
-                    ProducerPhone = { Text = producer.Phone },
                     Address = { Text = producer.City }
                 }).ToList();
 

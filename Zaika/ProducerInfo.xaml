@@ -3,34 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Zaika"
              mc:Ignorable="d" 
-             d:DesignHeight="70" d:DesignWidth="300" Padding="5">
+             d:DesignHeight="120" d:DesignWidth="500" FontSize="16" MinWidth="450">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Name="Title" Text="Producer" FontSize="16" HorizontalAlignment="Left" FontWeight="Bold" VerticalAlignment="Bottom"></TextBlock>
-        <TextBlock Name="ProducerPhone" Text="+79999999999" Grid.Column="1" FontSize="10" VerticalAlignment="Bottom"/>
-        <TextBlock Grid.Row="0" Grid.Column="3" Name="Address" Text="City" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Bottom"></TextBlock>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Name="Title" Text="Producer" FontSize="30" VerticalAlignment="Bottom" FontFamily="Segoe UI Light"/>
+            <TextBlock Name="Address" Text="City" LineHeight="24" FontSize="16" Margin="8,0,0,0" VerticalAlignment="Bottom" Foreground="#FF9E9E9E" FontFamily="Segoe UI Semilight"/>
+        </StackPanel>
 
-        <TextBlock Text="Incoming: " Grid.Row="1" HorizontalAlignment="Left"/>
-        <TextBlock Grid.Row="1" Grid.Column="1" Name="InName" Text="Name"></TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="2" Name="InDate" Text="Date"></TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="3" Name="InCost" Text="Cost"></TextBlock>
+        <!--<TextBlock Name="Phone" Text="📞" LineHeight="24" FontSize="16" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>-->
 
-        <TextBlock Text="Outcoming: " Grid.Row="2" HorizontalAlignment="Left"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" Name="OutName" Text="Name"></TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="2" Name="OutDate" Text="Date"></TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="3" Name="OutCost" Text="Cost"></TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <TextBlock Text="⤽" FontSize="40" FontFamily="Trebuchet MS" Padding="0,0,0,5" VerticalAlignment="Center" Foreground="#FF30C329"/>
+                <TextBlock Name="InName" Margin="0,0,7,0" Text="Octopus" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Name="InCost" Margin="0,0,7,0" Text="500$" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Name="InDate" Text="19.04.2014" VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="⤼" FontSize="40" FontFamily="Trebuchet MS" Padding="0,0,0,5" VerticalAlignment="Center" Foreground="#FFEC4635"/>
+                <TextBlock Name="OutName" Margin="0,0,7,0" Text="Kitten" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Name="OutCost" Margin="0,0,7,0" Text="99$" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Name="OutDate" Margin="0,0,10,0" Text="06.03.2016" VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </UserControl>
