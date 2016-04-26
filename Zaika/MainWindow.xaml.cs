@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 using FlickrNet;
 using Zaika.Core;
 using Color = System.Windows.Media.Color;
@@ -17,27 +18,22 @@ namespace Zaika {
         public MainWindow() {
             InitializeComponent();
 
-            //DB.ProductsLoaded += (o, e) => Dispatcher.Invoke(DisplayProducts);
+            //DB.ProductsLoaded += Ui(DisplayProducts);
             //DB.LoadProducts();
-            DB.ProductsLoaded += (o, e) => Dispatcher.Invoke(DisplayProducers);
+            DB.ProductsLoaded += Ui(DisplayProducers);
             DB.LoadProducers();
         }
 
-        public void DisplayProducers() {
-            var panelItems = new List<ProducerInfo>();
+        private EventHandler Ui(Action action) =>
+            (o, e) => Dispatcher.Invoke(action);
 
-            foreach (var producer in DB.Producers.Values) {
-                var info = new ProducerInfo();
-
-                info.Title.Text = producer.Name;
-                info.ProducerPhone.Text = producer.Phone;
-                info.Address.Text = producer.City;
-
-                panelItems.Add(info);
-            }
-
-            Producers.ItemsSource = panelItems;
-        }
+        public void DisplayProducers() =>
+            Producers.ItemsSource = DB.Producers.Values.Select(
+                producer => new ProducerInfo {
+                    Title = { Text = producer.Name },
+                    ProducerPhone = { Text = producer.Phone },
+                    Address = { Text = producer.City }
+                }).ToList();
 
         public void DisplayProducts() {
             var panelItems = new List<StackPanel>();
