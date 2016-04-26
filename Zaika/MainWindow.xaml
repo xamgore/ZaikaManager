@@ -7,6 +7,6 @@
                       Background="{DynamicResource MaterialDesignPaper}"
                       FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
                       WindowStartupLocation="CenterScreen" >
-    <ListBox x:Name="Products" Margin="5" BorderThickness="2"
+    <ListBox x:Name="Producers" Margin="5" BorderThickness="2"
             ScrollViewer.CanContentScroll="True" BorderBrush="{DynamicResource AccentColorBrush3}" />
 </controls:MetroWindow>

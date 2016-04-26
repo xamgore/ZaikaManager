@@ -17,8 +17,26 @@ namespace Zaika {
         public MainWindow() {
             InitializeComponent();
 
-            DB.ProductsLoaded += (o, e) => Dispatcher.Invoke(DisplayProducts);
-            DB.LoadProducts();
+            //DB.ProductsLoaded += (o, e) => Dispatcher.Invoke(DisplayProducts);
+            //DB.LoadProducts();
+            DB.ProductsLoaded += (o, e) => Dispatcher.Invoke(DisplayProducers);
+            DB.LoadProducers();
+        }
+
+        public void DisplayProducers() {
+            var panelItems = new List<ProducerInfo>();
+
+            foreach (var producer in DB.Producers.Values) {
+                var info = new ProducerInfo();
+
+                info.Title.Text = producer.Name;
+                info.ProducerPhone.Text = producer.Phone;
+                info.Address.Text = producer.City;
+
+                panelItems.Add(info);
+            }
+
+            Producers.ItemsSource = panelItems;
         }
 
         public void DisplayProducts() {
@@ -61,7 +79,7 @@ namespace Zaika {
                 panelItems.Add(stp);
             }
 
-            Products.ItemsSource = panelItems;
+            //Products.ItemsSource = panelItems;
         }
     }
 }
