@@ -4,21 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="120" d:DesignWidth="500" FontSize="16" MinWidth="450">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0,0,0,10">
+             d:DesignHeight="200" d:DesignWidth="500" FontSize="16" MinWidth="450">
+    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal">
             <TextBlock Name="Title" Text="Producer" FontSize="30" VerticalAlignment="Bottom" FontFamily="Segoe UI Light"/>
             <TextBlock Name="Address" Text="City" LineHeight="24" FontSize="16" Margin="8,0,0,0" VerticalAlignment="Bottom" Foreground="#FF9E9E9E" FontFamily="Segoe UI Semilight"/>
         </StackPanel>
 
         <!--<TextBlock Name="Phone" Text="📞" LineHeight="24" FontSize="16" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>-->
 
-        <Grid Grid.Row="1">
+        <Grid Name="Info" Height="30">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
@@ -26,18 +21,18 @@
 
             <StackPanel Grid.Column="0" Orientation="Horizontal">
                 <TextBlock Text="⤽" FontSize="40" FontFamily="Trebuchet MS" Padding="0,0,0,5" VerticalAlignment="Center" Foreground="#FF30C329"/>
-                <TextBlock Name="InName" Margin="0,0,7,0" Text="Octopus" VerticalAlignment="Center"></TextBlock>
-                <TextBlock Name="InCost" Margin="0,0,7,0" Text="500$" VerticalAlignment="Center"></TextBlock>
-                <TextBlock Name="InDate" Text="19.04.2014" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Name="IName" Margin="0,0,7,0" Text="Product" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Name="ICost" Margin="0,0,7,0" Text="500$" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Name="IDate" Text="19.04.2014" VerticalAlignment="Center"></TextBlock>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="⤼" FontSize="40" FontFamily="Trebuchet MS" Padding="0,0,0,5" VerticalAlignment="Center" Foreground="#FFEC4635"/>
-                <TextBlock Name="OutName" Margin="0,0,7,0" Text="Kitten" VerticalAlignment="Center"></TextBlock>
-                <TextBlock Name="OutCost" Margin="0,0,7,0" Text="99$" VerticalAlignment="Center"></TextBlock>
-                <TextBlock Name="OutDate" Margin="0,0,10,0" Text="06.03.2016" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Name="OName" Margin="0,0,7,0" Text="Product" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Name="OCost" Margin="0,0,7,0" Text="99$" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Name="ODate" Margin="0,0,10,0" Text="06.03.2016" VerticalAlignment="Center"></TextBlock>
             </StackPanel>
         </Grid>
 
-    </Grid>
+    </StackPanel>
 </UserControl>
