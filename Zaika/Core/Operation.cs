@@ -10,11 +10,6 @@ namespace Zaika.Core {
 
         public decimal Price { get; set; }
         public int Amount { get; set; }
-        public OpType Type { get; set; }
         public DateTime Date { get; set; }
-    }
-
-    public enum OpType {
-        Income = 0, Outcome = 1
     }
 }
