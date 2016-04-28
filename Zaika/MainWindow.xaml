@@ -7,7 +7,14 @@
                       Background="{DynamicResource MaterialDesignPaper}"
                       FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
                       WindowStartupLocation="CenterScreen">
-    <ListBox x:Name="Producers" HorizontalContentAlignment="Stretch" Margin="5" BorderThickness="2"
+    <Grid>
+        <ListBox x:Name="Producers" HorizontalContentAlignment="Stretch" Margin="5" BorderThickness="2"
             ScrollViewer.CanContentScroll="True" BorderBrush="{DynamicResource AccentColorBrush3}"
              Width="460"/>
+
+        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                        Margin="509,513,0,32" HorizontalAlignment="Left"
+                        Content="+" FontSize="40"/>
+
+    </Grid>
 </controls:MetroWindow>
