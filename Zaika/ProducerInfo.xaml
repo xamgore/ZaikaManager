@@ -1,36 +1,40 @@
 ﻿<UserControl x:Class="Zaika.ProducerInfo"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
              d:DesignHeight="200" d:DesignWidth="500" FontSize="16" MinWidth="450">
+    
+    
     <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+
         <StackPanel Orientation="Horizontal">
-            <TextBlock Name="Title" Text="Producer" FontSize="30" VerticalAlignment="Bottom" FontFamily="Segoe UI Light"/>
-            <TextBlock Name="Address" Text="City" LineHeight="24" FontSize="16" Margin="8,0,0,0" VerticalAlignment="Bottom" Foreground="#FF9E9E9E" FontFamily="Segoe UI Semilight"/>
+            <TextBlock Name="Title" Text="{Binding Path=Producer.Name, FallbackValue=Producer}" FontSize="30" VerticalAlignment="Bottom" FontFamily="Segoe UI Light" />
+            <TextBlock Name="Address" Text="{Binding Path=Producer.City, FallbackValue=City}" LineHeight="24" FontSize="16" 
+                       Margin="8,0,0,0" VerticalAlignment="Bottom" Foreground="#FF9E9E9E" FontFamily="Segoe UI Semilight" />
         </StackPanel>
 
         <!--<TextBlock Name="Phone" Text="📞" LineHeight="24" FontSize="16" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>-->
 
-        <Grid Name="Info" Height="30">
+        <Grid Height="{Binding InfoHeight, FallbackValue=30}" Visibility="{Binding ShowInfo}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <TextBlock Text="⤽" FontSize="40" FontFamily="Trebuchet MS" Padding="0,0,0,5" VerticalAlignment="Center" Foreground="#FF30C329"/>
-                <TextBlock Name="IName" Margin="0,0,7,0" Text="Product" VerticalAlignment="Center"></TextBlock>
-                <TextBlock Name="ICost" Margin="0,0,7,0" Text="500$" VerticalAlignment="Center"></TextBlock>
-                <TextBlock Name="IDate" Text="19.04.2014" VerticalAlignment="Center"></TextBlock>
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Visibility="{Binding ShowIncome}">
+                <TextBlock Text="⤽" FontSize="40" FontFamily="Trebuchet MS" Padding="0,0,0,5" VerticalAlignment="Center" Foreground="#FF30C329" />
+                <TextBlock Name="IName" Text="{Binding Path=Last.IncomeProduct, FallbackValue=Product}" Margin="0,0,7,0" VerticalAlignment="Center" />
+                <TextBlock Name="ICost" Text="{Binding Path=Last.IncomePrice, FallbackValue=500$, StringFormat={}{0:#,#.#}$ }" Margin="0,0,7,0" VerticalAlignment="Center" />
+                <TextBlock Name="IDate" Text="{Binding Path=Last.IncomeDate, FallbackValue='19.04.2014', StringFormat=d}" VerticalAlignment="Center" />
             </StackPanel>
 
-            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Text="⤼" FontSize="40" FontFamily="Trebuchet MS" Padding="0,0,0,5" VerticalAlignment="Center" Foreground="#FFEC4635"/>
-                <TextBlock Name="OName" Margin="0,0,7,0" Text="Product" VerticalAlignment="Center"></TextBlock>
-                <TextBlock Name="OCost" Margin="0,0,7,0" Text="99$" VerticalAlignment="Center"></TextBlock>
-                <TextBlock Name="ODate" Margin="0,0,10,0" Text="06.03.2016" VerticalAlignment="Center"></TextBlock>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="{Binding ShowOutcome}">
+                <TextBlock Text="⤼" FontSize="40" FontFamily="Trebuchet MS" Padding="0,0,0,5" VerticalAlignment="Center" Foreground="#FFEC4635" />
+                <TextBlock Name="OName" Margin="0,0,7,0" Text="{Binding Path=Last.OutcomeProduct, FallbackValue=Product}" VerticalAlignment="Center" />
+                <TextBlock Name="OCost" Margin="0,0,7,0" Text="{Binding Path=Last.OutcomePrice, FallbackValue=99$, StringFormat={}{0:#,#.#}$ }" VerticalAlignment="Center" />
+                <TextBlock Name="ODate" Margin="0,0,10,0" Text="{Binding Path=Last.OutcomeDate, FallbackValue='06.03.2016', StringFormat=d}" VerticalAlignment="Center" />
             </StackPanel>
         </Grid>
 

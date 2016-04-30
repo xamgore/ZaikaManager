@@ -1,29 +1,22 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
+using Zaika.Core;
+using static System.Windows.Visibility;
 
 namespace Zaika {
     public partial class ProducerInfo {
-        public ProducerInfo() {
+        public ProducerInfo(Producer producer) {
+            Producer = producer;
+            Last = producer.Last;
             InitializeComponent();
+            DataContext = this;
         }
 
-        private bool Empty(TextBlock block) =>
-            string.IsNullOrEmpty(block.Text);
+        public Producer Producer { get; set; }
+        public LastOperation Last { get; set; }
 
-        private void Hide(TextBlock element) =>
-            ((UIElement) element.Parent).Visibility = Visibility.Hidden;
-
-        public ProducerInfo Optimize() {
-            if (Empty(IName)) Hide(IName);
-            if (Empty(OName)) Hide(OName);
-
-            if (Empty(IName) && Empty(OName)) {
-                Info.Height = 0;
-                Info.Visibility = Visibility.Hidden;
-                Padding = new Thickness(0, 0, 0, 5);
-            }
-
-            return this;
-        }
+        public Visibility ShowIncome => string.IsNullOrEmpty(Last.IncomeProduct) ? Hidden : Visible;
+        public Visibility ShowOutcome => string.IsNullOrEmpty(Last.OutcomeProduct) ? Hidden : Visible;
+        public Visibility ShowInfo => ShowIncome == Hidden && ShowOutcome == Hidden ? Hidden : Visible;
+        public double InfoHeight => ShowInfo == Hidden ? 5 : 30;
     }
 }
