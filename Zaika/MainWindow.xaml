@@ -2,19 +2,18 @@
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-                      Title="ZaikaDB Manager" Height="651.088" Width="780.284"
+                      Title="ZaikaDB Manager" Height="651.088" Width="550"
                       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
                       Background="{DynamicResource MaterialDesignPaper}"
                       FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-                      WindowStartupLocation="CenterScreen">
+                      WindowStartupLocation="CenterScreen" MinWidth="460"
+                      BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush3}">
     <Grid>
-        <ListBox x:Name="Producers" HorizontalContentAlignment="Stretch" Margin="5" BorderThickness="2"
-            ScrollViewer.CanContentScroll="True" BorderBrush="{DynamicResource AccentColorBrush3}"
-             Width="460" ScrollViewer.VerticalScrollBarVisibility="Hidden" />
+        <ListBox x:Name="Operations" HorizontalContentAlignment="Stretch" Margin="0"
+            ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" />
 
         <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                        Margin="509,513,0,32" HorizontalAlignment="Left"
-                        Content="+" FontSize="40"/>
-
+            Margin="30" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+            Content="+" FontSize="30" Width="40" Height="40"/>
     </Grid>
 </controls:MetroWindow>

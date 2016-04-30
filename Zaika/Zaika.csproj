@@ -118,6 +118,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="OperationInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProducerInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -128,6 +132,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OperationInfo.xaml.cs">
+      <DependentUpon>OperationInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProducerInfo.xaml.cs">
       <DependentUpon>ProducerInfo.xaml</DependentUpon>
     </Compile>

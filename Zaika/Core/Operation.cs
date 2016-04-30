@@ -9,7 +9,7 @@ namespace Zaika.Core {
         public int WarehouseId { get; set; }
 
         public decimal Price { get; set; }
-        public int Amount { get; set; }
+        public int Augment { get; set; }
         public DateTime Date { get; set; }
     }
 }
