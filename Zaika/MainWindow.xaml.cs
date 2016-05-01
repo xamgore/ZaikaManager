@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Linq;
+using System.Windows;
+using System.Windows.Input;
 using Zaika.Core;
 
 namespace Zaika {
     public partial class MainWindow {
         public MainWindow() {
             InitializeComponent();
+
+            MouseMove += ChangeFloatingButtonOpacity;
 
             //DB.ProductsLoaded += Ui(DisplayProducts);
             //DB.ProducersLoaded += Ui(DisplayProducers);
@@ -31,5 +35,13 @@ namespace Zaika {
         //public void DisplayProducts() =>
         //    Products.ItemsSource = DB.Products.Values.Select(
         //        toy => new ProductInfo(toy.Name)).ToList();
+
+        private void ChangeFloatingButtonOpacity(object o, MouseEventArgs e) {
+            var p = e.GetPosition(Floating);
+            p.Offset(-Floating.Width / 2, -Floating.Height / 2);
+
+            var dist = 200;
+            Floating.Opacity = 1 - Math.Min(0.8, Math.Min(Math.Sqrt(p.X * p.X + p.Y * p.Y), dist) / dist);
+        }
     }
 }
