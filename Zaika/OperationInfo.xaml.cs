@@ -1,13 +1,20 @@
-﻿using Zaika.Core;
+﻿using System;
+using System.Windows.Media;
+using Zaika.Core;
 
 namespace Zaika {
     public partial class OperationInfo {
         public Operation Operation;
 
+        public string ProductName => Capitalize(DB.Products[Operation.ProductId].Name);
+
+        public string Augment => (Operation.Augment > 0 ? "+" : "–") + Math.Abs(Operation.Augment);
+        public Brush AugColor => new SolidColorBrush(Operation.Augment > 0 ? Colors.LimeGreen : Colors.OrangeRed);
+
+
         public string Description =>
-            $"{DB.Products[Operation.ProductId].Name} ({Operation.Augment}) " +
-            $"by {DB.Producers[Operation.ProducerId].Name} " +
-            $"at {Operation.Date.ToShortDateString()}";
+            $"by {DB.Producers[Operation.ProducerId].Name}";
+
 
         public OperationInfo(Operation operation) {
             Operation = operation;
@@ -15,6 +22,15 @@ namespace Zaika {
             DataContext = this;
 
             FontSize = 22;
+        }
+
+
+        private static string Capitalize(string str) {
+            if (str == null)
+                return null;
+            if (str.Length > 1)
+                return char.ToUpper(str[0]) + str.Substring(1);
+            return str.ToUpper();
         }
     }
 }
