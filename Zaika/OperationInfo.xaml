@@ -16,7 +16,7 @@
         <TextBlock Text="{Binding Augment, FallbackValue=–500}" Foreground="{Binding AugColor, FallbackValue=OrangeRed}" MinWidth="60"/>
         <TextBlock Text="{Binding ProductName, FallbackValue=Bunny}" MinWidth="90"/>
         <TextBlock Text="{Binding Description, FallbackValue='by AmsterdamShops'}" MinWidth="235" MaxWidth="235"/>
-        <TextBlock Text="{Binding Operation.Date, FallbackValue=27.05.14}" Foreground="SlateGray"/>
+        <TextBlock Text="{Binding Path=Operation.Date, StringFormat=dd.MM.yyyy, FallbackValue=27.05.14}" Foreground="SlateGray"/>
 
     </StackPanel>
 </UserControl>

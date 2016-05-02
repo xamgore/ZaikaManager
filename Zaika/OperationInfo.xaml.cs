@@ -4,7 +4,7 @@ using Zaika.Core;
 
 namespace Zaika {
     public partial class OperationInfo {
-        public Operation Operation;
+        public Operation Operation { get; set; }
 
         public string ProductName => Capitalize(DB.Products[Operation.ProductId].Name);
 
@@ -20,8 +20,6 @@ namespace Zaika {
             Operation = operation;
             InitializeComponent();
             DataContext = this;
-
-            FontSize = 22;
         }
 
 
