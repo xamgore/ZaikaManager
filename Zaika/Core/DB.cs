@@ -72,7 +72,7 @@ namespace Zaika.Core {
 
         public static void LoadOperations() {
             Zaika.FetchAsync<Operation>(
-                SqlBuilder.Select("*").From(typeof(Operation)).ToSqlQuery())
+                SqlBuilder.Select("*").From(typeof(Operation)).OrderByDescending("Id").ToSqlQuery())
                 .ContinueWith(task => Operations = task.Result.ToDictionary(operation => operation.Id))
                 .ContinueWith(task => OperationsLoaded?.Invoke(null, EventArgs.Empty));
         }
