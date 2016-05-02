@@ -16,6 +16,8 @@ namespace Zaika {
                 else if (e.Key == Key.Enter)
                     TryToSignIn(o, e);
             };
+
+            TryToSignIn(null, null);
         }
 
         private void TryToSignIn(object sender, RoutedEventArgs e) {
