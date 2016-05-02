@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 using Zaika.Core;
 
 namespace Zaika {
@@ -17,6 +18,10 @@ namespace Zaika {
 
             DB.ProductsLoaded += (o, e) => DB.LoadProducers();
             DB.ProducersLoaded += (o, e) => DB.LoadOperations();
+
+            var timer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 5)};
+            timer.Tick += (o, e) => DB.LoadOperations();
+            timer.Start();
 
             DB.LoadProducts();
         }
