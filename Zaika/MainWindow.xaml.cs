@@ -29,9 +29,12 @@ namespace Zaika {
         private EventHandler Ui(Action action) =>
             (o, e) => Dispatcher.Invoke(action);
 
-        public void DisplayOperations() =>
+        public void DisplayOperations() {
+            var index = Operations.Items.Count - Operations.SelectedIndex;
             Operations.ItemsSource = DB.Operations.Values.Select(
                 operation => new OperationInfo(operation)).ToList();
+            Operations.SelectedIndex = Operations.Items.Count - index;
+        }
 
         //public void DisplayProducers() =>
         //    Producers.ItemsSource = DB.Producers.Values.Select(
