@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using Zaika.Core;
@@ -23,9 +23,19 @@ namespace Zaika {
                 Login.Focus();
             else if (Password.Password.Length == 0)
                 Password.Focus();
-            else if (DB.Connect(Login.Text, Password.Password)) {
-                new MainWindow().Show();
-                Close();
+            else {
+                var login = (string) Login.Text.Clone();
+                var pass = (string) Password.Password.Clone();
+
+                new Thread(() => {
+                    if (DB.Connect(login, pass)) {
+                        Thread.Sleep(500);
+                        Dispatcher.Invoke(() => {
+                            new MainWindow().Show();
+                            Close();
+                        });
+                    }
+                }).Start();
             }
         }
     }
