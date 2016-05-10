@@ -51,5 +51,10 @@ namespace Zaika {
             var dist = 200;
             Floating.Opacity = 1 - Math.Min(0.8, Math.Min(Math.Sqrt(p.X * p.X + p.Y * p.Y), dist) / dist);
         }
+
+        private void Floating_Click(object sender, RoutedEventArgs e) {
+            var w = new AddWindow();
+            w.ShowDialog();
+        }
     }
 }
