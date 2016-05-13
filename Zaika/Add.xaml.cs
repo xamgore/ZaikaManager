@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
+using System.Windows.Input;
 using static System.Threading.Tasks.TaskContinuationOptions;
 using Zaika.Core;
 
@@ -10,6 +11,7 @@ namespace Zaika {
     public partial class AddWindow {
         public AddWindow() {
             InitializeComponent();
+            KeyDown += (o, e) => { if (e.Key == Key.Enter) button_Click(o, null); };
 
             DisplayProducts();
             DisplayProducers();
@@ -36,17 +38,16 @@ namespace Zaika {
 
         private void button_Click(object sender, RoutedEventArgs e) {
             var op = new Operation {
-                Augment = int.Parse(Augment.Text),
-                Price = int.Parse(Price.Text),
+                Augment = int.Parse("0" + Augment.Text),
+                Price = int.Parse("0" + Price.Text),
                 Date = DateTime.Now,
                 WarehouseId = DB.Warehouses[Warehouses.SelectedItem as string].Id,
                 ProducerId = (Producers.SelectedItem as ProducerInfo).Producer.Id,
                 ProductId = (Products.SelectedItem as ProductInfo).Product.Id,
             };
 
-            DB.Zaika.InsertAsync(op)
-                .ContinueWith(_ => DB.Operations[op.Id] = op)
-                .ContinueWith(_ => Close());
+            DB.Zaika.InsertAsync(op).ContinueWith(_ => DB.InsertOperation(op));
+            Close();
         }
     }
 }

@@ -38,6 +38,11 @@ namespace Zaika.Core {
             return true;
         }
 
+        public static void InsertOperation(Operation op) {
+            Operations[op.Id] = op;
+            OperationsLoaded?.Invoke(null, EventArgs.Empty);
+            LoadProducers();
+        }
 
         public static Task LoadProducts() {
             return Zaika.FetchAsync<Product>(
