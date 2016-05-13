@@ -38,10 +38,14 @@ namespace Zaika.Core {
             return true;
         }
 
+        public static Task RefreshLastOperations() {
+            return Zaika.Advanced.ExecuteAsync(SqlBuilder.Execute("update_last_operations").ToSqlQuery());
+        }
+
         public static void InsertOperation(Operation op) {
             Operations[op.Id] = op;
             OperationsLoaded?.Invoke(null, EventArgs.Empty);
-            LoadProducers();
+            //RefreshLastOperations().ContinueWith(_ => LoadProducers());
         }
 
         public static Task LoadProducts() {

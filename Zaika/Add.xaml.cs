@@ -4,7 +4,6 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
 using System.Windows.Input;
-using static System.Threading.Tasks.TaskContinuationOptions;
 using Zaika.Core;
 
 namespace Zaika {

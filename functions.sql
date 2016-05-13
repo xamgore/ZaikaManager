@@ -1,3 +1,10 @@
+CREATE OR REPLACE FUNCTION update_last_operations()
+    RETURNS void AS $$
+BEGIN
+    REFRESH MATERIALIZED VIEW "LastOperations";
+END;
+$$ LANGUAGE plpgsql;
+
 CREATE OR REPLACE FUNCTION allow_edit_the_last_row()
     RETURNS TRIGGER AS $$
 BEGIN

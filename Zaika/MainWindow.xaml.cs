@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MicroLite.Builder;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -25,6 +26,8 @@ namespace Zaika {
             var timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 5) };
             timer.Tick += (o, e) => DB.LoadOperations();
             timer.Start();
+
+            Closed += (o, e) => DB.RefreshLastOperations();
         }
 
         private EventHandler Ui(Action action) =>
