@@ -12,8 +12,7 @@ namespace Zaika {
         public Brush AugColor => new SolidColorBrush(Operation.Augment > 0 ? Colors.LimeGreen : Colors.OrangeRed);
 
 
-        public string Description =>
-            $"by {DB.Producers[Operation.ProducerId].Name}";
+        public string Description => $"by {DB.Producers[Operation.ProducerId].Name}";
 
 
         public OperationInfo(Operation operation) {

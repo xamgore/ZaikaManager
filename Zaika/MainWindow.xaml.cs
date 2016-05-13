@@ -10,20 +10,21 @@ namespace Zaika {
         public MainWindow() {
             InitializeComponent();
 
+            // Register event listeners
             MouseMove += ChangeFloatingButtonOpacity;
-
-            //DB.ProductsLoaded += Ui(DisplayProducts);
-            //DB.ProducersLoaded += Ui(DisplayProducers);
             DB.OperationsLoaded += Ui(DisplayOperations);
+            DB.WarehousesLoaded += Ui(() => Floating.Visibility = Visibility.Visible);
 
+            // Run async data loads from database
             DB.ProductsLoaded += (o, e) => DB.LoadProducers();
-            DB.ProducersLoaded += (o, e) => DB.LoadOperations();
-
-            var timer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 5)};
+            DB.ProducersLoaded += (o, e) => DB.LoadWarehouses();
+            DB.WarehousesLoaded += (o, e) => DB.LoadOperations();
+            DB.LoadProducts();
+            
+            // Update operations data every 5 seconds
+            var timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 5) };
             timer.Tick += (o, e) => DB.LoadOperations();
             timer.Start();
-
-            DB.LoadProducts();
         }
 
         private EventHandler Ui(Action action) =>
@@ -36,14 +37,6 @@ namespace Zaika {
             Operations.SelectedIndex = Operations.Items.Count - index;
         }
 
-        //public void DisplayProducers() =>
-        //    Producers.ItemsSource = DB.Producers.Values.Select(
-        //        producer => new ProducerInfo(producer)).ToList();
-
-        //public void DisplayProducts() =>
-        //    Products.ItemsSource = DB.Products.Values.Select(
-        //        toy => new ProductInfo(toy.Name)).ToList();
-
         private void ChangeFloatingButtonOpacity(object o, MouseEventArgs e) {
             var p = e.GetPosition(Floating);
             p.Offset(-Floating.Width / 2, -Floating.Height / 2);
@@ -53,8 +46,7 @@ namespace Zaika {
         }
 
         private void Floating_Click(object sender, RoutedEventArgs e) {
-            var w = new AddWindow();
-            w.ShowDialog();
+            new AddWindow().ShowDialog();
         }
     }
 }

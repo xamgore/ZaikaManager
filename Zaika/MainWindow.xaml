@@ -13,7 +13,7 @@
             ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" />
 
         <Button Name="Floating" Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-            Margin="30" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+            Margin="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="Hidden"
             Content="+" FontSize="30" Width="40" Height="40" Click="Floating_Click"/>
     </Grid>
 </controls:MetroWindow>
