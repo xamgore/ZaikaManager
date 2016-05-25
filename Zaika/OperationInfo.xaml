@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="Zaika.OperationInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             d:DesignHeight="50" d:DesignWidth="535" Padding="10,0,10,0">
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+        <StackPanel.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="Margin" Value="0,0,10,0"/>
+            </Style>
+        </StackPanel.Resources>
+
+        <TextBlock Text="{Binding Augment, FallbackValue=–500}" Foreground="{Binding AugColor, FallbackValue=OrangeRed}" MinWidth="60"/>
+        <TextBlock Text="{Binding ProductName, FallbackValue=Bunny}" MinWidth="90"/>
+        <TextBlock Text="{Binding Description, FallbackValue='by AmsterdamShops'}" MinWidth="235" MaxWidth="235"/>
+        <TextBlock Text="{Binding Path=Operation.Date, StringFormat=dd.MM.yyyy, FallbackValue=27.05.14}" Foreground="SlateGray"/>
+
+    </StackPanel>
+</UserControl>
