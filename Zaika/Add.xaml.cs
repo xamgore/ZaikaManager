@@ -36,9 +36,16 @@ namespace Zaika {
            Warehouses.ItemsSource = DB.Warehouses.Keys.ToList();
 
         private void button_Click(object sender, RoutedEventArgs e) {
+            int augment;
+            decimal price;
+
+            if (!int.TryParse(Augment.Text, out augment) ||
+                !decimal.TryParse(Price.Text, out price))
+                return;
+
             var op = new Operation {
-                Augment = int.Parse("0" + Augment.Text),
-                Price = int.Parse("0" + Price.Text),
+                Augment = augment,
+                Price = price,
                 Date = DateTime.Now,
                 WarehouseId = DB.Warehouses[Warehouses.SelectedItem as string].Id,
                 ProducerId = (Producers.SelectedItem as ProducerInfo).Producer.Id,
