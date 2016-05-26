@@ -25,34 +25,50 @@ CREATE OR REPLACE FUNCTION check_has_enough_stuff()
     RETURNS TRIGGER AS $$
 DECLARE last_date      DATE;
         product_amount INT;
+        warehouse_amnt INT;
         stuff_id       INT;
+        last_op_id     INT;
 BEGIN
     SELECT "Date" FROM "Operations" ORDER BY "Id" DESC LIMIT 1 INTO last_date;
 
     IF new."Date" < last_date THEN
         RAISE EXCEPTION 'Outdated operations (before %) are deprecated', last_date;
+        RAISE NOTICE 'ooooooooooooooooooooooooooooooooooooooooooooo';
     END IF;
 
+    -- that is ok to take new products
+    IF (new."Augment" >= 0) THEN RETURN new; END IF;
 
-    SELECT "Id", "Amount"
-      INTO stuff_id, product_amount
+    -- otherwise we have to recount available amount
+    SELECT "Id", "Amount", "LastUpdate"
+      INTO stuff_id, warehouse_amnt, last_op_id
       FROM "Stuffs"
      WHERE "WarehouseId" = new."WarehouseId"
        AND "ProductId"   = new."ProductId" LIMIT 1;
 
-    product_amount := COALESCE(product_amount, 0);
-    -- RAISE NOTICE 'Amount: %', product_amount;
+    warehouse_amnt := COALESCE(warehouse_amnt, 0);
+    last_op_id     := COALESCE(last_op_id, 0);
 
-    IF (new."Augment" < 0) AND product_amount < abs(new."Augment") THEN
+    -- augment is always > 0
+    SELECT SUM("Augment") INTO product_amount FROM "Operations"
+     WHERE "Id" > COALESCE(last_op_id, 0) AND
+           "ProductId" = new."ProductId"  AND
+           "WarehouseId" = new."WarehouseId";
+           
+    product_amount := warehouse_amnt + COALESCE(product_amount, 0);
+
+    IF product_amount < abs(new."Augment") THEN
         RAISE EXCEPTION 'Not enough amount of product on the warehouse to proceed operation';
     END IF;
 
     -- compute new amount
     IF stuff_id IS NULL THEN
-        INSERT INTO "Stuffs" ("ProductId", "WarehouseId", "Amount")
-            VALUES (new."ProductId", new."WarehouseId", product_amount + new."Augment");
+        INSERT INTO "Stuffs" ("ProductId", "WarehouseId", "Amount", "LastUpdate")
+            VALUES (new."ProductId", new."WarehouseId", product_amount + new."Augment", new."Id");
     ELSE
-        UPDATE "Stuffs" SET "Amount" = product_amount + new."Augment" WHERE "Id" = stuff_id;
+        UPDATE "Stuffs"
+           SET "Amount" = product_amount + new."Augment", "LastUpdate" = new."Id"
+         WHERE "Id" = stuff_id;
     END IF;
 
     RETURN new;

@@ -33,7 +33,8 @@ CREATE TABLE "Stuffs" (
 	"Id"          serial	PRIMARY KEY,
 	"ProductId"   integer	NOT NULL  REFERENCES "Products"  ("Id")  ON DELETE CASCADE ON UPDATE CASCADE,
 	"WarehouseId" integer	NOT NULL  REFERENCES "Warehouses"("Id")  ON DELETE CASCADE ON UPDATE CASCADE,
-	"Amount"      integer
+	"Amount"      integer,
+    "LastUpdate"  integer
 );
 
 
