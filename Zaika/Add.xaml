@@ -26,6 +26,7 @@
         <Label x:Name="label4" Content="Augment: " Grid.Column="3" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" FontSize="18.667" Width="91"/>
         <TextBox x:Name="Price" Grid.Column="3" Height="40" Margin="106,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18.667" Text="1" HorizontalContentAlignment="Center"/>
         <TextBox x:Name="Augment" Grid.Column="3" Height="40" Margin="106,55,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18.667" Text="1" HorizontalContentAlignment="Center"/>
-        <Button x:Name="button" Content="Confirm" Grid.Column="3" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" Width="207" Height="51" Click="button_Click"/>
+        <Button x:Name="button" Content="Confirm" Grid.Column="3" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top" Width="207" Height="51" Click="button_Click"/>
+        <TextBlock x:Name="maxAmount" Grid.Column="3" HorizontalAlignment="Left" Margin="136,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
     </Grid>
 </controls:MetroWindow>
